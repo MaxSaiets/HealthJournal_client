@@ -36,7 +36,6 @@ const initialState: QuoteState = {
     }
 };
 
-// Async thunks
 export const fetchQuotes = createAsyncThunk(
     'quote/fetchQuotes',
     async (filters: QuoteFilters = {}, { rejectWithValue }) => {
@@ -134,7 +133,6 @@ const quoteSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // fetchQuotes
             .addCase(fetchQuotes.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -152,7 +150,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // fetchRandomQuote
             .addCase(fetchRandomQuote.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -165,7 +162,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // fetchDailyQuote
             .addCase(fetchDailyQuote.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -178,7 +174,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // fetchCategories
             .addCase(fetchCategories.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -191,7 +186,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // createQuote
             .addCase(createQuote.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -204,7 +198,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // updateQuote
             .addCase(updateQuote.pending, (state) => {
                 state.loading = true;
                 state.error = null;
@@ -226,7 +219,6 @@ const quoteSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload as string;
             })
-            // deleteQuote
             .addCase(deleteQuote.pending, (state) => {
                 state.loading = true;
                 state.error = null;

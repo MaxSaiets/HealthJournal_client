@@ -2,36 +2,9 @@ import { useState } from "react";
 import LinksAndButtons from "./LinksAndButtons";
 import { MAIN_ROUTE } from "../../consts/routePaths";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '../../store/store';
-import authService from '../../services/authService';
-import { getCurrentUser } from '../../store/user/userSlice';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        return localStorage.getItem("selectedTheme") === "dark";
-    });
-    const user = useSelector((state: RootState) => state.user.user);
-    const dispatch = useDispatch();
-
-    const handleToggleTheme = async () => {
-        const newTheme = isDarkMode ? "light" : "dark";
-        setIsDarkMode(!isDarkMode);
-
-        if (user && user.preferences) {
-            try {
-                await authService.updateProfile({ preferences: { ...user.preferences, theme: newTheme } });
-                dispatch(getCurrentUser()); // оновити user у redux
-            } catch (e) {
-                // TODO: показати помилку, якщо треба
-            }
-        } else {
-            localStorage.setItem("selectedTheme", newTheme);
-            document.documentElement.classList.remove("light", "dark");
-            document.documentElement.classList.add(newTheme);
-        }
-    };
 
     return (
         <nav className="sticky top-0 z-100 bg-secondary shadow-sm">

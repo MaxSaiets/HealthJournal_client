@@ -54,7 +54,6 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
         <div className="space-y-6">
             <h3 className="text-lg font-medium text-gray-900">Ваша статистика</h3>
 
-            {/* Основні показники */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-blue-50 p-4 rounded-lg">
                     <div className="flex items-center">
@@ -114,7 +113,6 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
                 </div>
             </div>
 
-            {/* Детальна статистика */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-6 rounded-lg border border-gray-200">
                     <h4 className="text-lg font-medium text-gray-900 mb-4">Активність</h4>
@@ -157,7 +155,6 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
                 </div>
             </div>
 
-            {/* Досягнення */}
             {stats.achievements.length > 0 && (
                 <div className="bg-white p-6 rounded-lg border border-gray-200">
                     <h4 className="text-lg font-medium text-gray-900 mb-4">Досягнення</h4>
@@ -174,7 +171,6 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
                 </div>
             )}
 
-            {/* Прогрес до цілей */}
             <div className="bg-white p-6 rounded-lg border border-gray-200">
                 <h4 className="text-lg font-medium text-gray-900 mb-4">Прогрес до цілей</h4>
                 <div className="space-y-4">

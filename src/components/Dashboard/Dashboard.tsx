@@ -83,7 +83,6 @@ const Dashboard: React.FC = () => {
         let filtered = [...entries];
         let weekStart: Date, weekEnd: Date, monthStart: Date, monthEnd: Date;
 
-        // Фільтрація за періодом
         switch (viewMode) {
             case 'day':
                 filtered = filtered.filter(entry => 
@@ -106,7 +105,6 @@ const Dashboard: React.FC = () => {
                 break;
         }
 
-        // Фільтрація за пошуком
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
             filtered = filtered.filter(entry =>
@@ -170,10 +168,8 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            {/* Сьогоднішні нагадування */}
             <DashboardReminders />
             
-            {/* Цитата дня */}
             <div className="mb-8">
                 <DailyQuote />
             </div>

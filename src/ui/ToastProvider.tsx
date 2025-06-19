@@ -42,7 +42,6 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   return (
     <ToastContext.Provider value={contextValue}>
       {children}
-      {/* Toasts container */}
       <div className="fixed z-50 bottom-6 right-6 flex flex-col gap-3 items-end pointer-events-none">
         {toasts.map((toast) => (
           <div

@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import type { RootState, AppDispatch } from '../../store/store';
-import { fetchTodayReminders } from '../../store/reminder/reminderSlice';
+import React, { useState } from 'react';
 import type { Reminder } from '../../types/reminder';
 
 interface ReminderNotificationProps {
@@ -19,7 +16,7 @@ const ReminderNotification: React.FC<ReminderNotificationProps> = ({
         setIsVisible(false);
         setTimeout(() => {
             onDismiss(reminder.id);
-        }, 300); // Час для анімації
+        }, 300);
     };
 
     if (!isVisible) {

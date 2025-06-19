@@ -183,7 +183,6 @@ const Analytics = () => {
         water: Number(day.totalWater) || 0
     }));
 
-    // Групування активностей за типом
     const activityTypeData = statistics.statistics.reduce((acc, day) => {
         day.entries.forEach(entry => {
             if (entry.activityType) {
@@ -202,8 +201,6 @@ const Analytics = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold mb-8">Аналітика здоров'я</h1>
-
-            {/* View Mode Selector */}
             <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                 <div className="flex gap-4 mb-4">
                     <button
@@ -262,7 +259,6 @@ const Analytics = () => {
                 </div>
             </div>
 
-            {/* Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h3 className="text-lg font-semibold mb-2">Всього записів</h3>
@@ -288,9 +284,7 @@ const Analytics = () => {
                 </div>
             </div>
 
-            {/* Charts */}
             <div className="space-y-8">
-                {/* Mood Chart */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Тренди настрою</h2>
                     <div className="h-80">
@@ -314,7 +308,6 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                {/* Activity Chart */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Огляд активності</h2>
                     <div className="h-80">
@@ -333,7 +326,6 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                {/* Water Chart */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Споживання води</h2>
                     <div className="h-80">
@@ -350,7 +342,6 @@ const Analytics = () => {
                     </div>
                 </div>
 
-                {/* Activity Type Distribution */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Розподіл типів активності</h2>
                     <div className="h-80">

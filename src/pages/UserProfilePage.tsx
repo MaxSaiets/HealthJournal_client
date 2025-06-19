@@ -165,7 +165,6 @@ const UserProfilePage: React.FC = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="max-w-4xl mx-auto">
-                {/* Header */}
                 <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                     <div className="flex items-center space-x-4">
                         <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
@@ -187,7 +186,6 @@ const UserProfilePage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Tabs */}
                 <div className="bg-white rounded-lg shadow-md mb-8">
                     <div className="border-b border-gray-200">
                         <nav className="flex space-x-8 px-6">

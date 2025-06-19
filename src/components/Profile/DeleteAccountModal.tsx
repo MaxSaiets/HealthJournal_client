@@ -24,7 +24,7 @@ const DeleteAccountModal: React.FC<DeleteAccountModalProps> = ({ onDelete, onClo
         const result = await onDelete(password);
 
         if (result.success) {
-            // Модаль закриється автоматично після успішного видалення
+            //закриється автоматично після успішного видалення
         } else {
             setError(result.error || 'Помилка видалення акаунту');
             setLoading(false);

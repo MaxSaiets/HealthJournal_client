@@ -11,11 +11,10 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
         showOnDashboard: false,
         soundEnabled: false,
         autoDismiss: false,
-        dismissDelay: 30 // секунди
+        dismissDelay: 30 
     });
 
     useEffect(() => {
-        // Завантажуємо налаштування з localStorage
         const savedSettings = localStorage.getItem('reminder_settings');
         if (savedSettings) {
             setSettings(JSON.parse(savedSettings));
@@ -44,7 +43,6 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
                 </div>
 
                 <div className="space-y-4">
-                    {/* Спливаючі повідомлення */}
                     <div className="flex items-center justify-between">
                         <div>
                             <h3 className="font-medium">Спливаючі повідомлення</h3>
@@ -61,7 +59,6 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
                         </label>
                     </div>
 
-                    {/* Показ на Dashboard */}
                     <div className="flex items-center justify-between">
                         <div>
                             <h3 className="font-medium">Показ на головній сторінці</h3>
@@ -78,7 +75,6 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
                         </label>
                     </div>
 
-                    {/* Автоматичне приховування */}
                     <div className="flex items-center justify-between">
                         <div>
                             <h3 className="font-medium">Автоматичне приховування</h3>
@@ -95,7 +91,6 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
                         </label>
                     </div>
 
-                    {/* Затримка автоматичного приховування */}
                     {settings.autoDismiss && (
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">

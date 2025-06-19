@@ -20,7 +20,6 @@ const ReminderManager: React.FC = () => {
     const autoDismissRefs = useRef<Map<string, number>>(new Map());
     const toast = useToast();
 
-    // Завантажуємо налаштування
     useEffect(() => {
         const savedSettings = localStorage.getItem('reminder_settings');
         if (savedSettings) {
@@ -28,12 +27,10 @@ const ReminderManager: React.FC = () => {
         }
     }, []);
 
-    // Завантажуємо нагадування при монтуванні
     useEffect(() => {
         dispatch(fetchTodayReminders());
     }, [dispatch]);
 
-    // Завантажуємо приховані нагадування з localStorage
     useEffect(() => {
         const today = new Date().toDateString();
         const dismissedKey = `dismissed_reminders_${today}`;
@@ -41,7 +38,6 @@ const ReminderManager: React.FC = () => {
         setDismissedReminders(new Set(dismissed));
     }, []);
 
-    // Очищаємо localStorage кожен день
     useEffect(() => {
         const today = new Date().toDateString();
         const dismissedKey = `dismissed_reminders_${today}`;
@@ -53,7 +49,6 @@ const ReminderManager: React.FC = () => {
         }
     }, []);
 
-    // Очищаємо всі таймери при розмонтуванні
     useEffect(() => {
         return () => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -64,13 +59,11 @@ const ReminderManager: React.FC = () => {
         };
     }, []);
 
-    // Знаходимо наступне нагадування, яке ще не показане/не відхилене
     function getNextReminder(reminders: Reminder[], dismissed: Set<string>) {
         const now = new Date();
         return reminders
             .filter(r => !dismissed.has(r.id))
             .map(r => {
-                // combine today's date + r.time
                 const [h, m] = r.time.split(':');
                 const date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), Number(h), Number(m));
                 return { ...r, date };
@@ -79,7 +72,6 @@ const ReminderManager: React.FC = () => {
             .sort((a, b) => a.date.getTime() - b.date.getTime())[0];
     }
 
-    // Основна логіка: setTimeout на найближче нагадування
     useEffect(() => {
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         if (!settings.enableNotifications) return;
@@ -89,7 +81,6 @@ const ReminderManager: React.FC = () => {
         const ms = next.date.getTime() - now.getTime();
         if (ms <= 0) return;
         timeoutRef.current = window.setTimeout(() => {
-            // Показуємо toast з кастомним виглядом
             toast.info(
                 <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
@@ -111,7 +102,6 @@ const ReminderManager: React.FC = () => {
             }
             if (settings.autoDismiss) {
                 const timeoutId = window.setTimeout(() => {
-                    // toast закриється сам
                 }, settings.dismissDelay * 1000);
                 autoDismissRefs.current.set(next.id, timeoutId);
             }
@@ -121,12 +111,11 @@ const ReminderManager: React.FC = () => {
         };
     }, [todayReminders, dismissedReminders, settings, toast]);
 
-    // Якщо notifications вимкнені — нічого не рендеримо
     if (!settings.enableNotifications) {
         return null;
     }
 
-    return null; // Більше не рендеримо власний UI
+    return null;
 };
 
 export default ReminderManager; 

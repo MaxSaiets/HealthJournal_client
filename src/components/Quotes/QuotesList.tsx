@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store/store';
+import type { AppDispatch, RootState } from '../../store/store';
 import { fetchQuotes, setFilters, clearFilters } from '../../store/quote/quoteSlice';
 import { Quote, QUOTE_CATEGORIES } from '../../types/quote';
 
@@ -65,7 +65,6 @@ const QuotesList: React.FC = () => {
 
     return (
         <div className="space-y-6">
-            {/* Фільтри */}
             <div className="bg-white rounded-lg p-6 shadow-md">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Фільтри</h3>
                 
@@ -134,7 +133,6 @@ const QuotesList: React.FC = () => {
                 </form>
             </div>
 
-            {/* Результати */}
             <div className="space-y-4">
                 {error && (
                     <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -184,7 +182,6 @@ const QuotesList: React.FC = () => {
                             ))}
                         </div>
 
-                        {/* Пагінація */}
                         {pagination.totalPages > 1 && (
                             <div className="flex justify-center space-x-2">
                                 <button

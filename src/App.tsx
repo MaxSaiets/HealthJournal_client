@@ -30,7 +30,6 @@ function App() {
         <Outlet />
       </main>
       
-      {/* Менеджер нагадувань для спливаючих повідомлень */}
       <ReminderManager />
     </div>
   )

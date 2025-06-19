@@ -147,7 +147,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         )}
                     </div>
 
-                    {/* Опис */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                             Опис
@@ -161,7 +160,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         />
                     </div>
 
-                    {/* Час */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                             Час *
@@ -179,7 +177,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         )}
                     </div>
 
-                    {/* Тип повторення */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                             Повторення
@@ -197,7 +194,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         </select>
                     </div>
 
-                    {/* Дні тижня для щотижневого повторення */}
                     {formData.repeatType === 'weekly' && (
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -222,7 +218,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         </div>
                     )}
 
-                    {/* Дні місяця для щомісячного повторення */}
                     {formData.repeatType === 'monthly' && (
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -247,7 +242,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         </div>
                     )}
 
-                    {/* Дата для одноразового нагадування */}
                     {formData.repeatType === 'none' && (
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -267,7 +261,6 @@ const ReminderForm: React.FC<ReminderFormProps> = ({
                         </div>
                     )}
 
-                    {/* Кнопки */}
                     <div className="flex gap-3 pt-4">
                         <button
                             type="button"

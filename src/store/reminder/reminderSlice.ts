@@ -18,7 +18,6 @@ const initialState: ReminderState = {
     currentReminder: null
 };
 
-// Async thunks
 export const fetchAllReminders = createAsyncThunk(
     'reminder/fetchAll',
     async (active?: boolean) => {
@@ -84,7 +83,6 @@ const reminderSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // Fetch all reminders
         builder
             .addCase(fetchAllReminders.pending, (state) => {
                 state.loading = true;
@@ -99,7 +97,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка завантаження нагадувань';
             });
 
-        // Fetch today reminders
         builder
             .addCase(fetchTodayReminders.pending, (state) => {
                 state.loading = true;
@@ -114,7 +111,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка завантаження нагадувань на сьогодні';
             });
 
-        // Fetch reminder by id
         builder
             .addCase(fetchReminderById.pending, (state) => {
                 state.loading = true;
@@ -129,7 +125,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка завантаження нагадування';
             });
 
-        // Create reminder
         builder
             .addCase(createReminder.pending, (state) => {
                 state.loading = true;
@@ -138,7 +133,6 @@ const reminderSlice = createSlice({
             .addCase(createReminder.fulfilled, (state, action) => {
                 state.loading = false;
                 state.reminders.push(action.payload);
-                // Оновлюємо сьогоднішні нагадування якщо нове нагадування активне
                 if (action.payload.isActive) {
                     state.todayReminders.push(action.payload);
                 }
@@ -148,7 +142,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка створення нагадування';
             });
 
-        // Update reminder
         builder
             .addCase(updateReminder.pending, (state) => {
                 state.loading = true;
@@ -169,7 +162,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка оновлення нагадування';
             });
 
-        // Toggle reminder active
         builder
             .addCase(toggleReminderActive.pending, (state) => {
                 state.loading = true;
@@ -190,7 +182,6 @@ const reminderSlice = createSlice({
                 state.error = action.error.message || 'Помилка зміни статусу нагадування';
             });
 
-        // Delete reminder
         builder
             .addCase(deleteReminder.pending, (state) => {
                 state.loading = true;

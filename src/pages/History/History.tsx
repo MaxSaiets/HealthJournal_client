@@ -109,7 +109,6 @@ const History = () => {
         })
         .sort((a, b) => {
             if (filters.entryType && filters.entryType !== 'full') {
-                // Сортуємо по значенню показника
                 const key: keyof HealthEntry = filters.entryType === 'water'
                     ? 'waterIntake'
                     : filters.entryType === 'sleep'
@@ -125,7 +124,6 @@ const History = () => {
                     return (a[key] as number) - (b[key] as number);
                 }
             } else {
-                // Сортуємо по даті
                 if (sortOrder === 'desc') {
                     return new Date(b.date).getTime() - new Date(a.date).getTime();
                 } else {
@@ -184,7 +182,6 @@ const History = () => {
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold mb-8">Health History</h1>
 
-            {/* Filters */}
             <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
@@ -233,7 +230,6 @@ const History = () => {
                 </div>
             </div>
 
-            {/* Entries List */}
             <div className="space-y-4">
                 {sortedEntries.length === 0 ? (
                     <div className="text-center text-gray-500 py-8">
@@ -260,7 +256,6 @@ const History = () => {
                 )}
             </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
                 <div className="flex justify-center mt-8 gap-2">
                     <button

@@ -23,7 +23,6 @@ const QuotesPage: React.FC = () => {
                 </p>
             </div>
 
-            {/* Таби */}
             <div className="mb-6">
                 <div className="border-b border-gray-200">
                     <nav className="-mb-px flex space-x-8">
@@ -44,7 +43,6 @@ const QuotesPage: React.FC = () => {
                 </div>
             </div>
 
-            {/* Контент */}
             <div className="space-y-6">
                 {activeTab === 'daily' && (
                     <div className="max-w-2xl">
