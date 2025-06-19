@@ -1,0 +1,11 @@
+export const MAIN_ROUTE = '/';
+export const DASHBOARD_ROUTE = '/dashboard';
+export const HISTORY_ROUTE = '/history';
+export const ANALYTICS_ROUTE = '/analytics';
+export const WELCOME_ROUTE = '/welcome';
+export const LOGIN_ROUTE = '/login';
+export const REGISTRATION_ROUTE = '/registration';
+export const DAYVIEW_ROUTE = '/day/:date';
+export const USER_PROFILE_ROUTE = '/profile';
+export const REMINDERS_ROUTE = '/reminders';
+export const QUOTES_ROUTE = '/quotes';
