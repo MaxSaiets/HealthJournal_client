@@ -50,6 +50,20 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
         return new Intl.NumberFormat('uk-UA').format(Math.round(num));
     };
 
+    // Прогрес-бар логіка
+    const getProgress = (value: number, goal: number, entries: number) => {
+        if (!goal || !entries) return 0;
+        const percent = (value / (goal * entries)) * 100;
+        if (!isFinite(percent) || percent < 0) return 0;
+        return Math.min(percent, 100);
+    };
+    const getSleepProgress = (avgSleep: number, sleepGoal: number) => {
+        if (!sleepGoal) return 0;
+        const percent = (avgSleep / sleepGoal) * 100;
+        if (!isFinite(percent) || percent < 0) return 0;
+        return Math.min(percent, 100);
+    };
+
     return (
         <div className="space-y-6">
             <h3 className="text-lg font-medium text-gray-900">Ваша статистика</h3>
@@ -177,36 +191,36 @@ const UserStats: React.FC<UserStatsProps> = ({ stats }) => {
                     <div>
                         <div className="flex justify-between text-sm mb-1">
                             <span>Вода</span>
-                            <span>{Math.round((stats.totalWater / (stats.goals.waterGoal * stats.totalEntries)) * 100)}%</span>
+                            <span>{Math.round(getProgress(stats.totalWater, stats.goals.waterGoal, stats.totalEntries))}%</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                             <div 
                                 className="bg-blue-600 h-2 rounded-full" 
-                                style={{ width: `${Math.min((stats.totalWater / (stats.goals.waterGoal * stats.totalEntries)) * 100, 100)}%` }}
+                                style={{ width: `${getProgress(stats.totalWater, stats.goals.waterGoal, stats.totalEntries)}%` }}
                             ></div>
                         </div>
                     </div>
                     <div>
                         <div className="flex justify-between text-sm mb-1">
                             <span>Сон</span>
-                            <span>{Math.round((stats.averageSleep / stats.goals.sleepGoal) * 100)}%</span>
+                            <span>{Math.round(getSleepProgress(stats.averageSleep, stats.goals.sleepGoal))}%</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                             <div 
                                 className="bg-purple-600 h-2 rounded-full" 
-                                style={{ width: `${Math.min((stats.averageSleep / stats.goals.sleepGoal) * 100, 100)}%` }}
+                                style={{ width: `${getSleepProgress(stats.averageSleep, stats.goals.sleepGoal)}%` }}
                             ></div>
                         </div>
                     </div>
                     <div>
                         <div className="flex justify-between text-sm mb-1">
                             <span>Активність</span>
-                            <span>{Math.round((stats.totalActivity / (stats.goals.activityGoal * stats.totalEntries)) * 100)}%</span>
+                            <span>{Math.round(getProgress(stats.totalActivity, stats.goals.activityGoal, stats.totalEntries))}%</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
                             <div 
                                 className="bg-green-600 h-2 rounded-full" 
-                                style={{ width: `${Math.min((stats.totalActivity / (stats.goals.activityGoal * stats.totalEntries)) * 100, 100)}%` }}
+                                style={{ width: `${getProgress(stats.totalActivity, stats.goals.activityGoal, stats.totalEntries)}%` }}
                             ></div>
                         </div>
                     </div>

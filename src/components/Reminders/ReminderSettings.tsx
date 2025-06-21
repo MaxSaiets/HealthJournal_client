@@ -25,6 +25,9 @@ const ReminderSettings: React.FC<ReminderSettingsProps> = ({ isOpen, onClose }) 
         const newSettings = { ...settings, [key]: value };
         setSettings(newSettings);
         localStorage.setItem('reminder_settings', JSON.stringify(newSettings));
+        if (key === 'showOnDashboard') {
+            window.dispatchEvent(new Event('storage'));
+        }
     };
 
     if (!isOpen) return null;

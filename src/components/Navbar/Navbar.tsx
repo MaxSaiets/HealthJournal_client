@@ -7,7 +7,7 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="sticky top-0 z-100 bg-secondary shadow-sm">
+        <nav className="sticky top-0 z-100 bg-[var(--surface-navbar)] shadow-sm">
             <div className="max-w-screen mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center space-x-4">
@@ -15,7 +15,7 @@ const Navbar = () => {
                             to={MAIN_ROUTE}
                             className="flex-shrink-0"
                         >
-                            <p className="text-base md:text-xl font-bold text-text">HealthJournal</p>
+                            <p className="text-base md:text-xl font-bold text-[var(--text-navbar)] select-none">HealthJournal</p>
                         </Link>
                     </div>
 

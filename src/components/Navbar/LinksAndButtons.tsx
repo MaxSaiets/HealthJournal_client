@@ -11,42 +11,42 @@ const LinksAndButtons = ({ isMobile }: Props) => {
         <div className={`flex items-center  ${isMobile ? 'flex-col gap-2 [&>*]:w-full [&>*]:text-xl' : 'gap-4'}`}>
             <Link 
                 to={DASHBOARD_ROUTE}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
-                Dashboard
+                Головна
             </Link>
 
             <Link 
                 to={HISTORY_ROUTE}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
                 Історія
             </Link>
 
             <Link 
                 to={ANALYTICS_ROUTE}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
                 Аналітика
             </Link>
 
             <Link 
                 to={QUOTES_ROUTE}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
                 Цитати
             </Link>
 
             <Link 
                 to={REMINDERS_ROUTE}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
                 Нагадування
             </Link>
             
             <Link 
                 to={USER_PROFILE_ROUTE}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className={`bg-[var(--surface-navbar-btn)] hover:bg-[var(--surface-navbar-btn-hover)] text-[var(--green-dark)] dark:text-[var(--green-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors`}
             >
                 Профіль
             </Link>

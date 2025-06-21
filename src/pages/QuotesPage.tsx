@@ -13,28 +13,32 @@ const QuotesPage: React.FC = () => {
     ] as const;
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 bg-[var(--color-background)] min-h-screen">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                <h1 className="text-3xl font-bold mb-2 text-[var(--color-primary)]">
                     Мотиваційні цитати
                 </h1>
-                <p className="text-gray-600">
+                <p className="text-[var(--color-text-secondary)]">
                     Знайдіть натхнення та мотивацію для здорового способу життя
                 </p>
             </div>
 
             <div className="mb-6">
-                <div className="border-b border-gray-200">
+                <div style={{ borderBottom: '1px solid var(--color-border)' }}>
                     <nav className="-mb-px flex space-x-8">
                         {tabs.map((tab) => (
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`py-2 px-1 border-b-2 font-medium text-sm ${
-                                    activeTab === tab.id
-                                        ? 'border-blue-500 text-blue-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                }`}
+                                style={{
+                                    borderBottom: activeTab === tab.id ? '2px solid var(--color-primary)' : '2px solid transparent',
+                                    color: activeTab === tab.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                                    background: 'none',
+                                    fontWeight: 500,
+                                    fontSize: '1rem',
+                                    padding: '0.5rem 0.25rem',
+                                    transition: 'color 0.2s, border-color 0.2s'
+                                }}
                             >
                                 {tab.label}
                             </button>

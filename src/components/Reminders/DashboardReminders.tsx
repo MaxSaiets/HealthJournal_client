@@ -5,8 +5,9 @@ import { fetchTodayReminders } from '../../store/reminder/reminderSlice';
 
 const DashboardReminders: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { todayReminders } = useSelector((state: RootState) => state.reminder);
+    const { todayReminders, loading, error } = useSelector((state: RootState) => state.reminder);
     const [showRemindersOnDashboard, setShowRemindersOnDashboard] = useState(false);
+    const [debug, setDebug] = useState(false);
 
     useEffect(() => {
         dispatch(fetchTodayReminders());
@@ -31,13 +32,30 @@ const DashboardReminders: React.FC = () => {
         return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
-    if (!showRemindersOnDashboard || todayReminders.length === 0) {
+    if (!showRemindersOnDashboard) {
         return null;
+    }
+
+    if (loading) {
+        return <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded text-yellow-800">Завантаження нагадувань...</div>;
+    }
+
+    if (error) {
+        return <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded text-red-800">{error}</div>;
+    }
+
+    if (todayReminders.length === 0) {
+        return <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded text-yellow-800">На сьогодні немає активних нагадувань
+            
+            {debug && <pre className="text-xs mt-2 bg-yellow-100 p-2 rounded overflow-x-auto">{JSON.stringify(todayReminders, null, 2)}</pre>}
+        </div>;
     }
 
     return (
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded">
-            <div className="font-semibold mb-2 text-yellow-800">Сьогоднішні нагадування:</div>
+            <div className="font-semibold mb-2 text-yellow-800">Сьогоднішні нагадування:
+                
+            </div>
             <ul className="list-disc pl-5 space-y-1">
                 {todayReminders.map(reminder => (
                     <li key={reminder.id} className="text-yellow-900">
@@ -48,6 +66,7 @@ const DashboardReminders: React.FC = () => {
                     </li>
                 ))}
             </ul>
+            {debug && <pre className="text-xs mt-2 bg-yellow-100 p-2 rounded overflow-x-auto">{JSON.stringify(todayReminders, null, 2)}</pre>}
         </div>
     );
 };

@@ -140,7 +140,7 @@ const UserProfilePage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
+            <div className="flex justify-center items-center min-h-screen bg-[var(--color-background)]">
                 <LoadingSpinner />
             </div>
         );
@@ -148,26 +148,26 @@ const UserProfilePage: React.FC = () => {
 
     if (error) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="text-red-500 text-xl">{error}</div>
+            <div className="flex justify-center items-center min-h-screen bg-[var(--color-background)]">
+                <div className="text-xl" style={{ color: 'var(--color-error)' }}>{error}</div>
             </div>
         );
     }
 
     if (!user) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="text-gray-500 text-xl">User not found</div>
+            <div className="flex justify-center items-center min-h-screen bg-[var(--color-background)]">
+                <div className="text-xl" style={{ color: 'var(--color-text-secondary)' }}>Користувача не знайдено</div>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 bg-[var(--color-background)] min-h-screen">
             <div className="max-w-4xl mx-auto">
-                <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div className="rounded-lg shadow-md p-6 mb-8 bg-[var(--color-surface)]">
                     <div className="flex items-center space-x-4">
-                        <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        <div className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold bg-[var(--color-primary)] text-[var(--color-surface)]">
                             {user.avatar ? (
                                 <img src={user.avatar} alt="Avatar" className="w-full h-full rounded-full object-cover" />
                             ) : (
@@ -175,10 +175,10 @@ const UserProfilePage: React.FC = () => {
                             )}
                         </div>
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-900">{user.name}</h1>
-                            <p className="text-gray-600">{user.email}</p>
+                            <h1 className="text-3xl font-bold text-[var(--color-primary)]">{user.name}</h1>
+                            <p className="text-sm text-[var(--color-text-secondary)]">{user.email}</p>
                             {user.lastLoginAt && (
-                                <p className="text-sm text-gray-500">
+                                <p className="text-sm text-[var(--color-text-secondary)]">
                                     Останній вхід: {new Date(user.lastLoginAt).toLocaleDateString('uk-UA')}
                                 </p>
                             )}
@@ -186,8 +186,8 @@ const UserProfilePage: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-md mb-8">
-                    <div className="border-b border-gray-200">
+                <div className="rounded-lg shadow-md mb-8 bg-[var(--color-surface)]">
+                    <div style={{ borderBottom: '1px solid var(--color-border)' }}>
                         <nav className="flex space-x-8 px-6">
                             {[
                                 { id: 'profile', label: 'Профіль' },
@@ -198,11 +198,15 @@ const UserProfilePage: React.FC = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id as any)}
-                                    className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                                        activeTab === tab.id
-                                            ? 'border-blue-500 text-blue-600'
-                                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                    }`}
+                                    style={{
+                                        borderBottom: activeTab === tab.id ? '2px solid var(--color-primary)' : '2px solid transparent',
+                                        color: activeTab === tab.id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                                        background: 'none',
+                                        fontWeight: 500,
+                                        fontSize: '1rem',
+                                        padding: '1rem 0.25rem',
+                                        transition: 'color 0.2s, border-color 0.2s'
+                                    }}
                                 >
                                     {tab.label}
                                 </button>

@@ -2,11 +2,16 @@
 @import 'leaflet/dist/leaflet.css';
 
 @theme {
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --color-background: var(--background);
-  --color-text: var(--text);
+  --color-primary: var(--green-main);
+  --color-secondary: var(--green-dark);
+  --color-accent: var(--green-accent);
+  --color-background: var(--background-main);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text-main);
+  --color-text-secondary: var(--text-secondary);
+  --color-error: var(--error);
+  --color-success: var(--success);
 }
 
 @keyframes fadeIn {
@@ -54,17 +59,35 @@
 }
 
 :root {
-  --primary: #68919b;
-  --secondary: #526c93;
-  --accent: #c29c63;
-  --background: #7192a1;
-  --text: #000000;
+  --green-main: #4caf50;
+  --green-dark: #357a38;
+  --green-accent: #406f43;
+  --background-main: #f7faf7;
+  --surface: #ffffff;
+  --surface-navbar: #357a38;
+  --surface-navbar-btn: #e8f5e9;
+  --surface-navbar-btn-hover: #c8e6c9;
+  --border: #e0e0e0;
+  --text-main: #1a2e22;
+  --text-secondary: #5c7a6e;
+  --text-navbar: #fff;
+  --error: #e57373;
+  --success: #66bb6a;
 }
 
 .dark {
-  --primary: #1b3238;
-  --secondary: #122a30;
-  --accent: #c29c63;
-  --background: #2e383a;
-  --text: #f3f3f3;
+  --green-main: #81c784;
+  --green-dark: #388e3c;
+  --green-accent: #a5d6a7;
+  --background-main: #181f1b;
+  --surface: #232d25;
+  --surface-navbar: #1b5e20;
+  --surface-navbar-btn: #26332a;
+  --surface-navbar-btn-hover: #357a38;
+  --border: #37463f;
+  --text-main: #f3fff3;
+  --text-secondary: #a5d6a7;
+  --text-navbar: #fff;
+  --error: #ef9a9a;
+  --success: #81c784;
 }

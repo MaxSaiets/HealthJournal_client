@@ -164,93 +164,89 @@ const History = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="flex justify-center items-center min-h-screen bg-[var(--color-background)]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2" style={{ borderColor: 'var(--color-primary)', borderTopColor: 'transparent' }}></div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="text-red-500 text-xl">{error}</div>
+            <div className="flex justify-center items-center min-h-screen bg-[var(--color-background)]">
+                <div className="text-xl" style={{ color: 'var(--color-error)' }}>{error}</div>
             </div>
         );
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8">Health History</h1>
+        <div className="container mx-auto px-4 py-8 bg-[var(--color-background)] min-h-screen">
+            <h1 className="text-3xl font-bold mb-8 text-[var(--color-primary)]">Історія здоровʼя</h1>
 
-            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div className="rounded-lg shadow-md p-6 mb-8 bg-[var(--color-surface)]">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                        <label className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">Початкова дата</label>
                         <input
                             type="date"
                             name="startDate"
                             value={filters.startDate}
                             onChange={handleFilterChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 border-[var(--color-border)] text-[var(--color-text-main)] bg-[var(--color-surface)]"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                        <label className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">Кінцева дата</label>
                         <input
                             type="date"
                             name="endDate"
                             value={filters.endDate}
                             onChange={handleFilterChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 border-[var(--color-border)] text-[var(--color-text-main)] bg-[var(--color-surface)]"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Entry Type</label>
+                        <label className="block text-sm font-medium mb-1 text-[var(--color-text-secondary)]">Тип запису</label>
                         <select
                             name="entryType"
                             value={filters.entryType}
                             onChange={handleFilterChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 border-[var(--color-border)] text-[var(--color-text-main)] bg-[var(--color-surface)]"
                         >
-                            <option value="">All Types</option>
-                            <option value="full">Full Day</option>
-                            <option value="water">Water Intake</option>
-                            <option value="activity">Activity</option>
-                            <option value="sleep">Sleep</option>
-                            <option value="mood">Mood</option>
+                            <option value="">Всі</option>
+                            <option value="water">Вода</option>
+                            <option value="sleep">Сон</option>
+                            <option value="activity">Активність</option>
+                            <option value="mood">Настрій</option>
                         </select>
                     </div>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-4">
-                    <button onClick={() => handleQuickDate('today')} className="px-3 py-1 bg-blue-100 rounded hover:bg-blue-200">Сьогодні</button>
-                    <button onClick={() => handleQuickDate('week')} className="px-3 py-1 bg-blue-100 rounded hover:bg-blue-200">Тиждень</button>
-                    <button onClick={() => handleQuickDate('month')} className="px-3 py-1 bg-blue-100 rounded hover:bg-blue-200">Місяць</button>
-                    <button onClick={() => handleQuickDate('all')} className="px-3 py-1 bg-blue-100 rounded hover:bg-blue-200">Усі</button>
-                    <button onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')} className="px-3 py-1 bg-green-100 rounded hover:bg-green-200 ml-auto">Сортувати: {sortOrder === 'desc' ? '↓' : '↑'}</button>
+                    <button onClick={() => handleQuickDate('today')} style={{ background: 'var(--color-accent)', color: 'var(--color-surface)' }} className="px-3 py-1 rounded hover:opacity-90">Сьогодні</button>
+                    <button onClick={() => handleQuickDate('week')} style={{ background: 'var(--color-accent)', color: 'var(--color-surface)' }} className="px-3 py-1 rounded hover:opacity-90">Тиждень</button>
+                    <button onClick={() => handleQuickDate('month')} style={{ background: 'var(--color-accent)', color: 'var(--color-surface)' }} className="px-3 py-1 rounded hover:opacity-90">Місяць</button>
+                    <button onClick={() => handleQuickDate('all')} style={{ background: 'var(--color-accent)', color: 'var(--color-surface)' }} className="px-3 py-1 rounded hover:opacity-90">Усі</button>
+                    <button onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')} style={{ background: 'var(--color-primary)', color: 'var(--color-surface)' }} className="px-3 py-1 rounded hover:opacity-90">Сортувати: {sortOrder === 'desc' ? '↓' : '↑'}</button>
                 </div>
             </div>
 
             <div className="space-y-4">
                 {sortedEntries.length === 0 ? (
-                    <div className="text-center text-gray-500 py-8">
-                        No entries found
+                    <div className="text-center py-8 text-[var(--color-text-secondary)]">
+                        Жодного запису не знайдено
                     </div>
                 ) : (
                     sortedEntries.map(entry => (
-                        <div key={entry.id} className="bg-white rounded-lg shadow-md p-6">
+                        <div key={entry.id} className="bg-[var(--color-surface)] rounded-lg shadow-md p-6">
                             <div className="flex justify-between items-start mb-4">
                                 <div>
-                                    <h2 className="text-xl font-semibold">
-                                        {format(new Date(entry.date), 'EEEE, d MMMM yyyy', { locale: uk })}
+                                    <h2 className="text-xl font-semibold text-[var(--color-text-main)]">
+                                        {entry.title}
                                     </h2>
+                                    <div className="mt-4 text-[var(--color-text-secondary)]">
+                                        {entry.description}
+                                    </div>
                                 </div>
                             </div>
-                            {renderEntryContent(entry)}
-                            {entry.notes && (
-                                <div className="mt-4 text-gray-600">
-                                    <p>{entry.notes}</p>
-                                </div>
-                            )}
                         </div>
                     ))
                 )}

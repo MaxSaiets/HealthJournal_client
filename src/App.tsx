@@ -26,7 +26,7 @@ function App() {
         <Navbar />
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow bg-[var(--color-surface)]">
         <Outlet />
       </main>
       
